@@ -32,7 +32,7 @@ public abstract class Propiedad {
     /**
      * Nombre de la población donde se encuentra situada la propiedad.
      */
-    private String localidad;
+    protected String localidad;
 
     // ------------------------------------------------------------------------
     // Atributos de objeto variables (privados)
@@ -41,7 +41,7 @@ public abstract class Propiedad {
     /**
      * Precio de la población.
      */
-    private double precio;
+    protected double precio;
 
     // ------------------------------------------------------------------------
     // Constructores de la clase
@@ -84,8 +84,9 @@ public abstract class Propiedad {
      * Método abstracto (sin implementación) para calcular el IVA sobre el
      * importe de venta de una propiedad.
      *
+     * @return devuelve el precio de la propiedad incluyendo el IVA
      */
-    public abstract void calcularPrecioConIVA();
+    public abstract double calcularPrecioConIVA();
 
     /**
      * Método getter para obtener el nombre de la localidad donde está situada
@@ -103,7 +104,13 @@ public abstract class Propiedad {
      *
      * @param localidad the localidad to set
      */
-    public void setLocalidad(String localidad) {
+    public void setLocalidad(String localidad) throws NullPointerException, IllegalArgumentException {
+        if (localidad == null) {
+            throw new NullPointerException("La localidad no puede ser nula o vacía.");
+        }
+        if (localidad.trim().isEmpty()) {
+            throw new IllegalArgumentException("La localidad no puede ser nula o vacía.");
+        }
         this.localidad = localidad;
     }
 
@@ -122,11 +129,14 @@ public abstract class Propiedad {
      * @param precio El precio de la propiedad
      */
     public void setPrecio(double precio) {
+        if (precio < Propiedad.PRECIO_MINIMO || precio > Propiedad.PRECIO_MAXIMO) {
+            throw new IllegalArgumentException(String.format("El precio debe estar entre %.2f y %.2f euros.", Propiedad.PRECIO_MINIMO, Propiedad.PRECIO_MAXIMO));
+        }
         this.precio = precio;
     }
     
     @Override
     public String toString(){
-        return String.format("La propiedad situada en la localidad de %s tiene asignado un precio de venta de %.2f €.%n",this.getLocalidad(),this.getPrecio());
+        return String.format("La propiedad situada en la localidad de %s tiene asignado un precio de venta de %.2f euros.",getLocalidad(),getPrecio());
     }
 }
