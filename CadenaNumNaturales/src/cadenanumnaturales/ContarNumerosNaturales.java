@@ -4,11 +4,10 @@
  */
 package cadenanumnaturales;
 
-import java.util.InputMismatchException;
+
 import java.util.LinkedHashMap; // Usamos LinkedHashMap para mantener el orden de inserción
 import java.util.Map;
 import java.util.Scanner;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**

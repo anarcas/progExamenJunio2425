@@ -1,0 +1,8 @@
+Palabra: ddd        -> Se repite:    1 vez.
+Palabra: rrr        -> Se repite:    2 veces.
+Palabra: AAA        -> Se repite:    2 veces.
+Palabra: ASDF       -> Se repite:    1 vez.
+Palabra: BDF        -> Se repite:    1 vez.
+Palabra: DFASDFASDFSA -> Se repite:    1 vez.
+Palabra: qwer       -> Se repite:    1 vez.
+Palabra: rrr        -> Se repite:    2 veces.
